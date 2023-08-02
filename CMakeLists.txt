@@ -32,6 +32,9 @@ include_directories(
     ${PROJECT_SOURCE_DIR}/include
     ${PROJECT_SOURCE_DIR}/include/third_party
 )
+set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build/bin)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/bin)
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/lib)
 
 # 库文件查找目录
 link_directories(${PROJECT_SOURCE_DIR}/lib)
@@ -41,15 +44,15 @@ link_directories(${PROJECT_SOURCE_DIR}/lib)
 # add_subdirecroty(sub_dir [binary_dir])
 
 # 把src目录下所有源文件写入变量DIR_SRCS
-aux_source_directory(./src DIR_SRCS)
+# aux_source_directory(./src DIR_SRCS)
 
 # 以DIR_SRCS为源文件生成目标文件a.out
-add_executable(main ${DIR_SRCS})
+add_executable(main ./src/main.cpp)
+add_library(snake SHARED ./src/snake.cpp)
+add_library(render SHARED ./src/render.cpp)
+# set_target_properties(main PROPERTIES INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}/build/include)
 
 # 创建库文件
 # add_library(<name> [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
-
 # 目标文件链接的库
-target_link_libraries(main ncurses)
-set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build/bin)
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/bin)
+target_link_libraries(main ncurses render snake)
