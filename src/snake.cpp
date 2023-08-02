@@ -51,26 +51,26 @@ int snake::speedUp(int step)
 }
 **/
 
-int snake::getLength()
+inline int snake::getLength()
 {
     return length;
 }
 
-void snake::turnLeft()
+inline void snake::turnLeft()
 {
     direct = (direction)(direct - 1);
 }
 
-void snake::turnRight()
+inline void snake::turnRight()
 {
     direct = (direction)(direct + 1);
 }
-list<int *> snake::getBody()
+inline list<int *> snake::getBody()
 {
     return body;
 }
 
-bool snake::bump()
+inline bool snake::bump()
 {
     bool bump = (find(body.begin(), body.end(), head) != body.end());
     return bump;
