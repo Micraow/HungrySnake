@@ -1,0 +1,3 @@
+/home/micraow/Documents/HungrySnake/build/CMakeFiles/main.dir
+/home/micraow/Documents/HungrySnake/build/CMakeFiles/edit_cache.dir
+/home/micraow/Documents/HungrySnake/build/CMakeFiles/rebuild_cache.dir
