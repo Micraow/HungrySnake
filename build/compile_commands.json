@@ -1,8 +1,0 @@
-[
-{
-  "directory": "/home/micraow/Documents/HungrySnake/build",
-  "command": "/usr/bin/g++ -I/home/micraow/Documents/HungrySnake/include -I/home/micraow/Documents/HungrySnake/include/third_party -g -std=gnu++11 -Wall -Wextra -pedantic -Wno-error -o CMakeFiles/main.dir/src/snake.cpp.o -c /home/micraow/Documents/HungrySnake/src/snake.cpp",
-  "file": "/home/micraow/Documents/HungrySnake/src/snake.cpp",
-  "output": "CMakeFiles/main.dir/src/snake.cpp.o"
-}
-]
