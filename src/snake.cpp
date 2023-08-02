@@ -1,7 +1,7 @@
 #include "snake.h"
 #include <algorithm>
 using namespace std;
-#define NULL 0
+
 
 direction snake::getDirection()
 {
