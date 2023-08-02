@@ -75,8 +75,4 @@ bool snake::bump()
     bool bump = (find(body.begin(), body.end(), head) != body.end());
     return bump;
 }
-int main(int argc, char const *argv[])
-{
-    /* code */
-    return 0;
-}
+

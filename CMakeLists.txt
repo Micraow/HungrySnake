@@ -50,6 +50,6 @@ add_executable(main ${DIR_SRCS})
 # add_library(<name> [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
 
 # 目标文件链接的库
-target_link_libraries(main)
+target_link_libraries(main ncurses)
 set(PROJECT_BINARY_DIR ${PROJECT_SOURCE_DIR}/build/bin)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/build/bin)
