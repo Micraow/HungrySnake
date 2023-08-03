@@ -75,5 +75,4 @@ void startFrame()
     refresh();
     box(win, 0, 0);
     wrefresh(win);
-    getchar();
 }

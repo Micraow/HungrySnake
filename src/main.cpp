@@ -8,9 +8,8 @@ int main()
 {
     /** 每次输出后记得refresh,并设置等待**/
     init();
-    /**设置游戏开始**/
+    /**欢迎**/
     greeting();
-    /**设置游戏开始**/
     while (getachar() != 13)
     {
         greeting();
@@ -19,5 +18,4 @@ int main()
     Myrefresh();
     startFrame();
     Myrefresh();
-    
 }

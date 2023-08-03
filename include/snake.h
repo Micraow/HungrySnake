@@ -66,3 +66,26 @@ snake::snake(int x, int y, int length)
     // this->speed=speed;
     body.push_front(init);
 };
+
+class ticket
+{
+private:
+public:
+    /// @brief 表示要多久蛇才能走一次单位0.1s
+    float tickets;
+    snake *target;
+    ticket(snake target);
+    void start();
+    ~ticket();
+    int getTime();
+};
+
+ticket::ticket(snake target)
+{
+    this->target = &target;
+}
+
+ticket::~ticket()
+{
+    delete this->target;
+}

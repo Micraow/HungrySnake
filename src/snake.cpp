@@ -1,7 +1,7 @@
 #include "snake.h"
 #include <algorithm>
+#include <ctime>
 using namespace std;
-
 
 direction snake::getDirection()
 {
@@ -75,4 +75,22 @@ inline bool snake::bump()
     bool bump = (find(body.begin(), body.end(), head) != body.end());
     return bump;
 }
+void ticket::start()
+{
+    int lastTime = 0;
+    while (1)
+    {
+        int now = getTime();
+        if (now - lastTime > tickets)
+        {
+            target->march();
+            lastTime = now;
+        }
+    }
+}
 
+/// @brief 返回一个时间，单位0.1s
+int ticket::getTime()
+{
+    return clock() / (CLOCKS_PER_SEC / 10);
+}
