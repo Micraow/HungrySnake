@@ -89,12 +89,12 @@ int getcentery(WINDOW *Playwin)
 
 inline int playground::XtoCol(int X)
 {
-    return ((0.5) + (X / MAXX)) * getcenterx(this->win);
+    return (X / MAXX) * getcenterx(this->win)+getcenterx(this->win);
 }
 
 inline int playground::YtoLine(int Y)
 {
-    return ((0.5) + (Y / MAXY)) * getcentery(this->win);
+    return ((0.5) + (Y / MAXY)) * getcentery(this->win)+getcentery(this->win);
 }
 void playground::drawHead(snake Snake)
 {
