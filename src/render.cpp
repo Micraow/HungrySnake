@@ -89,12 +89,12 @@ int getcentery(WINDOW *Playwin)
 
 inline int playground::XtoCol(int X)
 {
-    return ((0.5) + (X / MAXX)) * COLS;
+    return ((0.5) + (X / MAXX)) * getcenterx(this->win);
 }
 
 inline int playground::YtoLine(int Y)
 {
-    return ((0.5) + (Y / MAXY)) * LINES;
+    return ((0.5) + (Y / MAXY)) * getcentery(this->win);
 }
 void playground::drawHead(snake Snake)
 {
@@ -102,7 +102,7 @@ void playground::drawHead(snake Snake)
     direction direct = Snake.getDirection();
     int x = head[0];
     int y = head[1];
-    move(playground::YtoLine(y), playground::XtoCol(x));
+    wmove(this->win,playground::YtoLine(y), playground::XtoCol(x));
     switch (direct)
     {
     case up:
@@ -116,7 +116,7 @@ void playground::drawHead(snake Snake)
     case right:
         waddch(this->win, RIGHT);
     }
-    refresh();
+    wrefresh(this->win);
 }
 
 void playground::drawBody(snake Snake)
@@ -129,10 +129,10 @@ void playground::drawBody(snake Snake)
         int *bodyPart = *p1;
         int x = bodyPart[0];
         int y = bodyPart[1];
-        move(playground::YtoLine(y), playground::XtoCol(x));
-        waddch(this->win, BODY);
+        wmove(this->win,playground::YtoLine(y), playground::XtoCol(x));
+        waddch(this->win,BODY);
     }
-    refresh();
+    wrefresh(this->win);
 }
 void playground::initSnake(snake Snake)
 {
