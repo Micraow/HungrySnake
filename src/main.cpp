@@ -10,14 +10,14 @@ int main()
     init();
     /**欢迎**/
     greeting();
-    while (getachar() != 13)
+    while (getchar() != 13)
     {
         greeting();
     }
-    clean();
-    Myrefresh();
+    clear();
+    refresh();
     WINDOW *win = startFrame();
-    Myrefresh();
+    refresh();
     playground playarea = playground(win);
     snake P1 = snake(0, 0, 2);
     playarea.initSnake(P1);

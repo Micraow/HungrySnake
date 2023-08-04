@@ -13,10 +13,7 @@
 
 void greeting();
 void init();
-int getachar();
 void withbackground(int num, char *string, bool bold);
-void clean();
-void Myrefresh();
 WINDOW *startFrame();
 void drawSnake();
 int getcenterx(WINDOW *Playwin);

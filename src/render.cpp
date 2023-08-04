@@ -17,11 +17,6 @@ void init()
     nodelay(stdscr, TRUE);
 }
 
-int getachar()
-{
-    return getchar();
-}
-
 void withbackground(int num, char *string, bool bold)
 {
     if (bold == false)
@@ -47,16 +42,6 @@ void greeting()
     withbackground(1, "HungrySnake", false);
     move(LINES / 2, COLS / 2 - 8);
     withbackground(2, "<Enter>", true);
-    refresh();
-}
-
-void clean()
-{
-    clear();
-}
-
-void Myrefresh()
-{
     refresh();
 }
 
@@ -89,12 +74,12 @@ int getcentery(WINDOW *Playwin)
 
 inline int playground::XtoCol(int X)
 {
-    return (X / MAXX) * getcenterx(this->win)+getcenterx(this->win);
+    return (X / MAXX) * getcenterx(this->win) + getcenterx(this->win);
 }
 
 inline int playground::YtoLine(int Y)
 {
-    return ((0.5) + (Y / MAXY)) * getcentery(this->win)+getcentery(this->win);
+    return ((Y / MAXY)) * getcentery(this->win) + getcentery(this->win);
 }
 void playground::drawHead(snake Snake)
 {
@@ -102,7 +87,7 @@ void playground::drawHead(snake Snake)
     direction direct = Snake.getDirection();
     int x = head[0];
     int y = head[1];
-    wmove(this->win,playground::YtoLine(y), playground::XtoCol(x));
+    wmove(this->win, playground::YtoLine(y), playground::XtoCol(x));
     switch (direct)
     {
     case up:
@@ -129,14 +114,14 @@ void playground::drawBody(snake Snake)
         int *bodyPart = *p1;
         int x = bodyPart[0];
         int y = bodyPart[1];
-        wmove(this->win,playground::YtoLine(y), playground::XtoCol(x));
-        waddch(this->win,BODY);
+        wmove(this->win, playground::YtoLine(y), playground::XtoCol(x));
+        waddch(this->win, BODY);
     }
     wrefresh(this->win);
 }
 void playground::initSnake(snake Snake)
 {
-    drawHead(Snake);
     drawBody(Snake);
+    drawHead(Snake);
     refresh();
 }
