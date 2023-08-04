@@ -1,5 +1,5 @@
 #include "render.h"
-#include "snake.h"
+
 /**借助snake.cpp里提供的蛇的对象，使用ncurses库完成一款贪吃蛇的游戏**/
 
 using namespace std;
@@ -16,6 +16,10 @@ int main()
     }
     clean();
     Myrefresh();
-    startFrame();
+    WINDOW *win = startFrame();
     Myrefresh();
+    playground playarea = playground(win);
+    snake P1 = snake(0, 0, 2);
+    playarea.initSnake(P1);
+    getchar();
 }

@@ -51,7 +51,7 @@ add_executable(main ./src/main.cpp)
 add_library(snake SHARED ./src/snake.cpp)
 add_library(render SHARED ./src/render.cpp)
 # set_target_properties(main PROPERTIES INCLUDE_DIRECTORIES ${PROJECT_SOURCE_DIR}/build/include)
-target_link_libraries(render ncurses)
+target_link_libraries(render snake ncurses)
 # 创建库文件
 # add_library(<name> [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
 # 目标文件链接的库

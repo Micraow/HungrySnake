@@ -28,7 +28,7 @@ public:
     /// @param speed 行进速度，初始2
     snake(int x, int y, int length);
     /// @brief 行进
-    void march();
+    int *march();
     /// @brief 左转
     void turnLeft();
     /// @brief 右转

@@ -8,7 +8,7 @@ direction snake::getDirection()
     return direct;
 }
 
-void snake::march()
+int *snake::march()
 {
     body.push_front(head);
 
@@ -40,8 +40,10 @@ void snake::march()
     head[0] = x;
     head[1] = y;
     int *last = body.back();
+    int needClean = *last;
     delete last;
     body.pop_back();
+    return &needClean;
 }
 /**
 int snake::speedUp(int step)
@@ -65,7 +67,7 @@ inline void snake::turnRight()
 {
     direct = (direction)(direct + 1);
 }
-inline list<int *> snake::getBody()
+list<int *> snake::getBody()  //WHY:加了inline就编译不过了？
 {
     return body;
 }

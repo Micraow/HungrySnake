@@ -1,5 +1,4 @@
 #include "render.h"
-#include <ncurses.h>
 
 void init()
 {
@@ -61,7 +60,7 @@ void Myrefresh()
     refresh();
 }
 
-void startFrame()
+WINDOW *startFrame()
 {
     move(1, COLS / 2 - 10);
     init_pair(3, COLOR_RED, COLOR_BLACK);
@@ -75,4 +74,69 @@ void startFrame()
     refresh();
     box(win, 0, 0);
     wrefresh(win);
+    return win;
+}
+
+int getcenterx(WINDOW *Playwin)
+{
+    return getmaxx(Playwin) / 2;
+}
+
+int getcentery(WINDOW *Playwin)
+{
+    return getmaxy(Playwin) / 2;
+}
+
+inline int playground::XtoCol(int X)
+{
+    return ((0.5) + (X / MAXX)) * COLS;
+}
+
+inline int playground::YtoLine(int Y)
+{
+    return ((0.5) + (Y / MAXY)) * LINES;
+}
+void playground::drawHead(snake Snake)
+{
+    int *head = Snake.getPos();
+    direction direct = Snake.getDirection();
+    int x = head[0];
+    int y = head[1];
+    move(playground::YtoLine(y), playground::XtoCol(x));
+    switch (direct)
+    {
+    case up:
+        waddch(this->win, UP);
+        break;
+
+    case down:
+        waddch(this->win, DOWN);
+    case left:
+        waddch(this->win, LEFT);
+    case right:
+        waddch(this->win, RIGHT);
+    }
+    refresh();
+}
+
+void playground::drawBody(snake Snake)
+{
+    list<int *>::iterator p1;
+    list<int *> body;
+    body = Snake.getBody();
+    for (p1 = body.begin(); p1 != body.end(); p1++)
+    {
+        int *bodyPart = *p1;
+        int x = bodyPart[0];
+        int y = bodyPart[1];
+        move(playground::YtoLine(y), playground::XtoCol(x));
+        waddch(this->win, BODY);
+    }
+    refresh();
+}
+void playground::initSnake(snake Snake)
+{
+    drawHead(Snake);
+    drawBody(Snake);
+    refresh();
 }
