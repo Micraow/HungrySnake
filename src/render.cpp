@@ -123,5 +123,5 @@ void playground::initSnake(snake Snake)
 {
     drawBody(Snake);
     drawHead(Snake);
-    refresh();
+    wrefresh(this->win);
 }
